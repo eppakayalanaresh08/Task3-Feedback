@@ -1,0 +1,32 @@
+<div class="app-container">
+    <div class="feedback-card">
+      <ng-container *ngIf="isFeedbackSelected; else feedbackQuestion">
+        <!-- Render the thank you screen -->
+        <div class="thank-you-container">
+          <img [src]="loveEmojiUrl" alt="love emoji" class="love-emoji" />
+          <h1 class="thank-you-text">Thank You!</h1>
+          <p class="description">
+            We will use your feedback to improve our customer support performance.
+          </p>
+        </div>
+      </ng-container>
+      <ng-template #feedbackQuestion>
+        <!-- Render the feedback question -->
+        <div class="feedback-question-container">
+          <h1 class="feedback-question">
+            How satisfied are you with our customer support performance?
+          </h1>
+          <ul class="emojis-list">
+            <li *ngFor="let emoji of emojis">
+              <button type="button" class="emoji-btn" (click)="onClickEmoji()">
+                <img [src]="emoji.imageUrl" [alt]="emoji.name" class="emoji" />
+                <br />
+                <span class="emoji-name">{{ emoji.name }}</span>
+              </button>
+            </li>
+          </ul>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+  
